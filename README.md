@@ -16,3 +16,5 @@
 
  **Fingerprint the operating systems running on the hosts with the -O nmap option.**<br>
    +nmap -O 192.168.6.1 
+ **Probe open ports to determine service/version info**
+   +nmap -sV 192.168.6.130
