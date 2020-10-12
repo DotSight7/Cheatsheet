@@ -22,3 +22,5 @@
 
 # search Exploit-db.comm
    +searchsploit pchart 2.1.3
+   +searchspoit -m exploits php/webapps/31173.txt
+
