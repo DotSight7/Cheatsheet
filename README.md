@@ -6,7 +6,7 @@
 ###### curl
 
 # fping
-  **Run a ping scan on the entire network with fping**<br>
+ **Run a ping scan on the entire network with fping**<br>
     + fping -a -g 192.168.10.0 2> /dev/null
 
 # nmap 
