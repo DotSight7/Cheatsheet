@@ -2,6 +2,7 @@
 
 ###### fping
 ###### nmap 
+###### search Exploit-db.comm
 
 # fping
   **Run a ping scan on the entire network with fping**<br>
@@ -18,3 +19,6 @@
    +nmap -O 192.168.6.1 
  **Probe open ports to determine service/version info**
    +nmap -sV 192.168.6.130
+
+# search Exploit-db.comm
+   +searchsploit pchart 2.1.3
