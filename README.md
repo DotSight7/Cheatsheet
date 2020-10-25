@@ -1,4 +1,5 @@
 # Cheatsheet & exam
+https://m.blog.naver.com/cowboy2238
 https://lisandre.com/
 
 ###### fping
