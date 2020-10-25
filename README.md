@@ -2,7 +2,7 @@
 
 ###### fping
 ###### nmap 
-###### search Exploit-db.comm
+###### search Exploit-db.com
 ###### curl
 
 # fping
@@ -21,15 +21,13 @@
  **Probe open ports to determine service/version info**
    + nmap -sV 192.168.6.130
 
-# search Exploit-db.comm
+# search Exploit-db.com
    + searchsploit pchart 2.1.3
    + searchspoit -m exploits php/webapps/31173.txt
    
 # curl
    + curl -H "User-Agent:Mozilla/4.0" http://192.168.1.68:8080
    # Optixal's OSCP Notes
-
-![20190701_164451](https://user-images.githubusercontent.com/19287477/60424084-20863c00-9c22-11e9-990a-1cba27aa9cb6.jpg)
 
 > Try Harder
 
