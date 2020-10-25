@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <cstdio>
 using namespace std;
-
+//최대공약수 GCD(Greatest Common Divisor)
 int get_gcd(int a, int b){
     while(b !=0){
         int r = a%b;
@@ -11,7 +11,7 @@ int get_gcd(int a, int b){
     }
     return a;
 }
-
+//최소공배수 LCM(Least Common Multiple)
 int get_lcm(int a, int b, int c){
     return a*b/c;
 }
