@@ -1,6 +1,7 @@
 # Cheatsheet & exam
 https://m.blog.naver.com/cowboy2238
 https://lisandre.com/
+https://www.tripwire.com/state-of-security/security-awareness/oscp-journey/
 
 ###### fping
 ###### nmap 
